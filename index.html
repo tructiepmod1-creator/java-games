@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>J2ME Player 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>body { margin:0; background:#000; overflow:hidden; }</style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/gh/tuananhpro/j2me-emulator@main/dist/j2me.js"></script>
+    <div id="game" style="width:100vw; height:100vh;"></div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const jar = params.get('jar');
+        if(jar) {
+            const player = new J2ME(document.getElementById('game'), {
+                workerPath: "https://cdn.jsdelivr.net/gh/tuananhpro/j2me-emulator@main/dist/worker.js"
+            });
+            player.loadJar(jar).then(() => player.start());
+        }
+    </script>
+</body>
+</html>
